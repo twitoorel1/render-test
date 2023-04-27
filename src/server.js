@@ -26,9 +26,9 @@ app.use(cors({
 
 // app.use("/", routes);
 
-app.use("/", express.static(path.resolve(path.dirname("./client/build"))));
+app.use("/", express.static(path.resolve(path.join(__dirname, '../client/build'))));
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(path.dirname("./client/build"), "index.html"));
+  res.sendFile(path.resolve(path.join(__dirname, '../client/build'), "index.html"));
 });
 
 
