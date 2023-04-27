@@ -19,17 +19,17 @@ app.use(cors({
   origin: "https://orel-deploy.onrender.com/",
 }))
 
-app.use("/", express.static(path.resolve(__dirname, "./client/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});
-
 
 app.get("/", (req, res) => {
   res.send("Home Page Backend");
 });
 
 app.use("/", routes);
+
+app.use("/", express.static(path.resolve(__dirname, "./client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Working ON => http://localhost:${port}`));
