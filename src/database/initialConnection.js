@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-let DevMode = true;
+let DevMode = false;
 
 const OPTIONS_MONGODB = {
   useNewUrlParser: true,
