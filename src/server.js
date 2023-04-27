@@ -12,7 +12,7 @@ initialConnection();
 // app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/uploads", express.static("uploads"));
+// app.use("/uploads", express.static("uploads"));
 
 app.use(cors({
   credentials: true,
@@ -20,11 +20,11 @@ app.use(cors({
 }))
 
 
-app.get("/", (req, res) => {
-  res.send("Home Page Backend");
-});
+// app.get("/", (req, res) => {
+//   res.send("Home Page Backend");
+// });
 
-app.use("/", routes);
+// app.use("/", routes);
 
 app.use("/", express.static(path.resolve(__dirname, "./client/build")));
 app.get("*", (req, res) => {
