@@ -9,10 +9,21 @@ const initialConnection = require("./database/initialConnection");
 // Connect Database
 initialConnection();
 
-app.use(cors());
+// app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads"));
+
+app.use(cors({
+  credentials: true,
+  origin: "http://localhost:3000",
+}))
+
+app.use("/", express.static(path.resolve(__dirname, "./client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
+
 
 app.get("/", (req, res) => {
   res.send("Home Page Backend");
